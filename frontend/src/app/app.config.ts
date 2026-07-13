@@ -17,10 +17,10 @@ export const appConfig: ApplicationConfig = {
         options: {
           cssLayer: {
             name: 'primeng',
-            order: 'theme, base, primeng, components, utilities'
-          }
-        }
-      }
-    })
-  ]
+            order: 'theme, base, primeng, components, utilities',
+          },
+        },
+      },
+    }),
+  ],
 };

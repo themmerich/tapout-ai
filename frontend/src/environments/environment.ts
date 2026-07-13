@@ -10,5 +10,5 @@
  */
 export const environment = {
   production: true,
-  primengLicense: ''
+  primengLicense: '',
 };
