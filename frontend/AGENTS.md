@@ -1,21 +1,49 @@
-You are an expert in TypeScript, Angular, and scalable web application development. You write functional, maintainable, performant, and accessible code following Angular and TypeScript best practices.
+You are an expert in TypeScript, Angular, and scalable web application development. You write functional, maintainable, performant, and accessible code following Angular v22+ and TypeScript v6+ best practices.
+
+## Agent Behavior & Workflow
+
+- **Verification:** Before declaring a task complete, verify your changes do not break existing imports or TypeScript strictness.
+- **Context:** Do not guess dependencies. If you need to know an installed library version, read `package.json`.
+- **Comments:** Don't remove existing comments in the code.
+- **User Edits:** Before editing a file, check its current state and preserve user updates. Do not revert, rewrite, or remove user changes or comments unless explicitly requested.
+- **Diffs:** Prefer minimal diffs.
+- **Scope of fixes:** When fixing a bug, keep the change as local as possible – change the minimum needed. Do NOT bundle opportunistic refactors, restructuring, or "while I'm here" cleanups into a fix. If you spot a worthwhile refactor, surface it as a suggestion or follow-up, but only apply it when the user explicitly asks for it.
+- **ESLint:** Run lint and relevant tests before finishing.
+- **Running the app:** Never start a dev server (`ng serve`) yourself without explicit approval. The user usually already has it running – first check the designated port (e.g. `http://localhost:4200`) and use the running server if present. Only if nothing is running there may you ask for approval to start it. Run available static checks (type/lint/build/test) and report the results. (See the Testing section for the exact check.)
+- **Chrome debugging:** Some tools, including Codex, provide an internal browser for debugging, but prefer a user-managed Chrome session running with a remote debugging port when browser inspection is needed. Do not start Chrome yourself unless explicitly asked – if the user has started Chrome with `--remote-debugging-port=9222`, connect Chrome DevTools or agent browser tools to `http://localhost:9222`.
+- **Angular MCP server:** This workspace ships the Angular CLI MCP server, configured as `angular-cli` in the repo-root `.mcp.json` (runs `pnpm -C <repo>/frontend exec ng mcp`, so it always resolves this `frontend/` workspace). Prefer its tools for Angular-specific work – version-aware docs search, `ng generate` schematics, and workspace/project inspection – over answering from memory. Clients load it on startup and prompt for approval on first use; see https://angular.dev/ai/mcp.
+- **Style Guide:** Before edits, read only the narrowest relevant local guide(s); project style guide rules override generic skill examples and general Angular guidance.
+  - [Angular baseline](style-guide/style-guide.md) – component and Angular coding conventions.
+  - [TypeScript](style-guide/style-guide.ts.md) – `.ts` files and TypeScript patterns.
+  - [HTML templates](style-guide/style-guide.html.md) – Angular templates and template accessibility.
+  - [SCSS](style-guide/style-guide.scss.md) – component styles, selectors, tokens, and layout.
+  - [Accessibility](style-guide/style-guide.a11y.md) – semantic HTML, keyboard behavior, ARIA, and WCAG checks.
+  - [Testing](style-guide/style-guide.spec.md) – unit and e2e test conventions.
+  - [NPM packages](style-guide/style-guide.npm.md) – dependency and package changes.
+  - [Git](style-guide/style-guide.git.md) – branch, commit, and review workflow.
+  - [Markdown](style-guide/style-guide.md.md) – documentation and Markdown edits.
+- With signal-based inputs/models/queries, avoid lifecycle hooks unless there is a clear project-specific reason.
+- Do not modify unrelated files.
 
 ## TypeScript Best Practices
 
-- Use strict type checking
-- Prefer type inference when the type is obvious
-- Avoid the `any` type; use `unknown` when type is uncertain
+- Use strict type checking (`strict: true`).
+- Prefer type inference when the type is obvious.
+- NEVER use the `any` type. Use `unknown` when a type is strictly uncertain and narrow it via type guards.
+- Do not use the `_` prefix for private or protected members.
+- Make sure to not create any new lint errors or warnings.
+- **DOM collections:** `NodeListOf` and `HTMLCollectionOf` do NOT have `[Symbol.iterator]()` in this project's strict TypeScript config. Always wrap them with `Array.from()` before using `for...of`, spread, or array methods (e.g., `Array.from(el.querySelectorAll('.foo'))`).
+- **No hardcoded layout values:** Never assume fixed pixel sizes for dynamically sized elements (chips, tags, badges, etc.). Always measure actual rendered dimensions via `offsetWidth`/`offsetHeight`/`getBoundingClientRect()` and account for CSS `gap`, `padding`, and `flex-shrink` behavior.
+- **Build verification:** After every code change, run the TypeScript compiler / eslint (`npx nx lint <project>`) and confirm zero errors before declaring the task done. Do not rely on IDE hints alone.
 
-## Angular Best Practices
+## Modern Angular (v22+) Standards
 
-- Always use standalone components over NgModules
-- Must NOT set `standalone: true` inside Angular decorators. It's the default in Angular v20+.
+- **Standalone:** Always use standalone components. Do NOT set `standalone: true` inside the decorator, as it is the default in v20+.
+- **Zoneless:** Assume the application is Zoneless. Never import `zone.js`. Rely on Signals for reactivity.
 - Do NOT set `changeDetection: ChangeDetectionStrategy.OnPush` explicitly. `OnPush` is the default in Angular v22+.
-- Use signals for state management
-- Implement lazy loading for feature routes
-- Do NOT use the `@HostBinding` and `@HostListener` decorators. Put host bindings inside the `host` object of the `@Component` or `@Directive` decorator instead
-- Use `NgOptimizedImage` for all static images.
-  - `NgOptimizedImage` does not work for inline base64 images.
+- Use NgRx signal store for state management
+- **Data Fetching:** Use the new `resource()`, `rxResource()` or `httpResource()` APIs for asynchronous data fetching instead of traditional RxJS + async pipe patterns.
+- **Routing:** Implement lazy loading for feature routes using `loadComponent`.
 
 ## Accessibility Requirements
 
