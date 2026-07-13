@@ -13,7 +13,3 @@ pnpm-lock.yaml
 # Coverage
 /coverage
 
-# Markdown — left to the author; respects .editorconfig (preserve trailing
-# whitespace and line length, which matter for Markdown line breaks)
-*.md
-
