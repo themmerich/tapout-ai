@@ -42,3 +42,6 @@ __screenshots__/
 # System files
 .DS_Store
 Thumbs.db
+
+# Local, git-ignored environment override (holds secrets like the PrimeNG license key)
+/src/environments/environment.local.ts
