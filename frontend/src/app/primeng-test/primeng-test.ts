@@ -30,9 +30,7 @@ import { MessageService } from 'primeng/api';
                 [placeholder]="t('namePlaceholder')"
                 class="w-full"
               />
-              <span class="text-sm text-surface-500">{{
-                t('greeting', { name: name() || t('stranger') })
-              }}</span>
+              <span class="text-sm text-surface-500">{{ t('greeting', { name: name() || t('stranger') }) }}</span>
             </div>
 
             <div class="flex flex-wrap items-center gap-3">
@@ -43,12 +41,7 @@ import { MessageService } from 'primeng/api';
             <div class="flex items-center gap-2">
               <span class="font-medium">{{ t('language') }}:</span>
               @for (lang of langs; track lang) {
-                <p-button
-                  [label]="lang.toUpperCase()"
-                  size="small"
-                  [outlined]="activeLang() !== lang"
-                  (onClick)="switchLang(lang)"
-                />
+                <p-button [label]="lang.toUpperCase()" size="small" [outlined]="activeLang() !== lang" (onClick)="switchLang(lang)" />
               }
             </div>
           </div>

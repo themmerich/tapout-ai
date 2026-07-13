@@ -5,9 +5,6 @@ Agent skills for this repository live under `.claude/skills/`. Each skill folder
 They fall into two groups: **third-party skills** copied or adapted from public sources, and
 **custom skills** authored in this repository.
 
-Work through [Lab 02 – Agent Skills](labs/02-skills.html) to try a few skills on your own project
-and author one custom skill.
-
 To keep this index honest, run the
 [`update-skills-directory`](.claude/skills/update-skills-directory/SKILL.md) skill whenever a
 skill is added, renamed, or removed – it verifies skill frontmatter, support-file structure, and
@@ -35,7 +32,6 @@ Copied or adapted from public sources; the origin column records where each skil
 | [angular-developer](.claude/skills/angular-developer/SKILL.md) | Generates Angular code and architectural guidance, version-aware, with a `ng build` verification loop. | [`angular/skills`](https://github.com/angular/skills)         |
 | [brainstorming](.claude/skills/brainstorming/SKILL.md)         | Design-first gate: turn an idea into an approved spec before any code is written.                      | [`obra/superpowers`](https://github.com/obra/superpowers)     |
 | [grill-me](.claude/skills/grill-me/SKILL.md)                   | Interrogates a plan one question at a time to stress-test it before building.                          | [`mattpocock/skills`](https://github.com/mattpocock/skills)   |
-| [spartan](.claude/skills/spartan/SKILL.md)                     | Works with spartan/ui (Brain + Helm) via the `@spartan-ng/cli` generators.                             | [`spartan-ng/spartan`](https://github.com/spartan-ng/spartan) |
 
 ### Scanning skills for vulnerabilities
 
