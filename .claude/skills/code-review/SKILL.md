@@ -73,19 +73,24 @@ state without reading this session's history.
 
 ### 3. Load Style Guides
 
-Read `style-guide/style-guide.md`, then read only the specific style guides for touched file types:
+The style guides live in `frontend/style-guide/` and apply **only to the Angular frontend**
+(`frontend/`). For changes outside `frontend/` (e.g. the Spring Boot `backend/`), skip this pass and
+note that no frontend style guide applies.
 
-- TypeScript or Angular code: `style-guide/style-guide.ts.md`
-- Angular templates: `style-guide/style-guide.html.md`
-- SCSS: `style-guide/style-guide.scss.md`
-- Accessibility-sensitive template or UI changes: `style-guide/style-guide.a11y.md`
-- Tests: `style-guide/style-guide.spec.md`
-- NPM dependency or package changes: `style-guide/style-guide.npm.md`
-- Markdown documentation: `style-guide/style-guide.md.md`
-- Git workflow, commits, or branch changes: `style-guide/style-guide.git.md`
+For touched files under `frontend/`, read `frontend/style-guide/style-guide.md` first, then read
+only the specific style guides for the touched file types:
 
-_Done when_ every touched file type has a corresponding style-guide check or an explicit
-not-applicable note.
+- TypeScript or Angular code: `frontend/style-guide/style-guide.ts.md`
+- Angular templates: `frontend/style-guide/style-guide.html.md`
+- SCSS: `frontend/style-guide/style-guide.scss.md`
+- Accessibility-sensitive template or UI changes: `frontend/style-guide/style-guide.a11y.md`
+- Tests: `frontend/style-guide/style-guide.spec.md`
+- NPM dependency or package changes: `frontend/style-guide/style-guide.npm.md`
+- Markdown documentation: `frontend/style-guide/style-guide.md.md`
+- Git workflow, commits, or branch changes: `frontend/style-guide/style-guide.git.md`
+
+_Done when_ every touched frontend file type has a corresponding style-guide check, or the change is
+outside `frontend/` and that is noted as not-applicable.
 
 ### 4. Dispatch or Run the Review
 

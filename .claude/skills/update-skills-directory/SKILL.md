@@ -1,15 +1,15 @@
 ---
 name: update-skills-directory
-description: Audit .agents/skills so every skill has valid frontmatter, a lean SKILL.md, flat support folders, and a root SKILLS.md link. Use when the user adds, renames, removes, or restructures a skill, or asks to update the skills index/directory. Do not use it to create per-skill README files.
+description: Audit .claude/skills so every skill has valid frontmatter, a lean SKILL.md, flat support folders, and a root SKILLS.md link. Use when the user adds, renames, removes, or restructures a skill, or asks to update the skills index/directory. Do not use it to create per-skill README files.
 license: MIT
 metadata:
-  author: Alexander Thalhammer
+  author: Thomas Hemmerich
   version: '1.0'
 ---
 
 # Update skills directory
 
-Keep `.agents/skills/` aligned with agent-skill best practices: one `SKILL.md` per skill, optional
+Keep `.claude/skills/` aligned with agent-skill best practices: one `SKILL.md` per skill, optional
 flat `references/`, `scripts/`, or `assets/` folders, and a repo-root `SKILLS.md` index. Skill
 folders are agent artifacts, so do not create per-skill `README.md` files.
 
@@ -17,7 +17,7 @@ folders are agent artifacts, so do not create per-skill `README.md` files.
 
 ### 1. Enumerate
 
-List every immediate subfolder of `.agents/skills/` and read `SKILLS.md` if it exists.
+List every immediate subfolder of `.claude/skills/` and read `SKILLS.md` if it exists.
 
 _Done when_ every skill folder and every current index entry is accounted for.
 
