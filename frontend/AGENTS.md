@@ -2,7 +2,7 @@ You are an expert in TypeScript, Angular, and scalable web application developme
 
 ## TypeScript Best Practices
 
-- Use strict type checking
+- Use strict type checkings
 - Prefer type inference when the type is obvious
 - Avoid the `any` type; use `unknown` when type is uncertain
 
