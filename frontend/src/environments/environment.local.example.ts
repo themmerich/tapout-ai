@@ -13,5 +13,5 @@
  */
 export const environment = {
   production: false,
-  primengLicense: 'YOUR-PRIMENG-LICENSE-KEY'
+  primengLicense: 'YOUR-PRIMENG-LICENSE-KEY',
 };

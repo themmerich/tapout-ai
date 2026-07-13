@@ -16,8 +16,8 @@ import { MessageService } from 'primeng/api';
       <p-card header="PrimeNG Smoke Test" class="w-full max-w-xl">
         <div class="flex flex-col gap-6">
           <p class="text-surface-600 dark:text-surface-300">
-            If the button below is fully styled and clicking it shows a toast,
-            PrimeNG is wired up correctly.
+            If the button below is fully styled and clicking it shows a toast, PrimeNG is wired up
+            correctly.
           </p>
 
           <div class="flex flex-col gap-2">
@@ -43,7 +43,7 @@ import { MessageService } from 'primeng/api';
         </div>
       </p-card>
     </main>
-  `
+  `,
 })
 export class PrimeNgTest {
   private readonly messages = inject(MessageService);
@@ -56,7 +56,7 @@ export class PrimeNgTest {
     this.messages.add({
       severity: 'success',
       summary: 'PrimeNG works!',
-      detail: `Hello ${this.name() || 'stranger'} — clicked ${this.clicks()} time(s).`
+      detail: `Hello ${this.name() || 'stranger'} — clicked ${this.clicks()} time(s).`,
     });
   }
 }
