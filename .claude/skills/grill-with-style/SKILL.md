@@ -32,7 +32,7 @@ Also look for a project style guide at `style-guide/style-guide.md`. If it exist
 - Markdown documentation edits: `style-guide/style-guide.md.md`
 - Git or commit planning: `style-guide/style-guide.git.md`
 
-When the user's plan conflicts with the style guide, call it out as a design constraint and ask for a decision. For example: "The style guide prefers signal inputs and `ChangeDetectionStrategy.OnPush`; does this plan require an exception, or should we reshape the component boundary?"
+When the user's plan conflicts with the style guide, call it out as a design constraint and ask for a decision. For example: "The style guide requires Signal Forms for new forms; does this plan require an exception, or should we reshape the component boundary?"
 
 Do not quote or restate the full style guide. Use it to sharpen questions, identify constraints, and recommend project-consistent answers.
 

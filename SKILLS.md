@@ -35,17 +35,16 @@ Copied or adapted from public sources; the origin column records where each skil
 
 ### Scanning skills for vulnerabilities
 
-Skills are executable instructions, so a third-party skill is as risky as any dependency you
-pull in. [NVIDIA SkillSpector](https://github.com/NVIDIA/SkillSpector) is an open-source
-(Apache 2.0) security scanner built for exactly this: point it at a skill – a git repo, URL, zip,
-directory, or single file – and it flags vulnerabilities, malicious patterns, and security risks
-before you install it. It checks 64 patterns across 16 categories (prompt injection, data
-exfiltration, privilege escalation, supply chain, excessive agency, system-prompt leakage, MCP
-tool poisoning, and more), combining fast static analysis with optional LLM semantic analysis and
-live CVE lookups, and emits terminal, JSON, Markdown, or SARIF reports plus a 0–100 risk score.
+Skills are executable instructions, so a third-party skill is as risky as any dependency you pull
+in. Vet every third-party skill with [NVIDIA SkillSpector](https://github.com/NVIDIA/SkillSpector)
+before adopting it here (see the [scanning guide](https://docs.nvidia.com/skills/scanning-agent-skills)).
 
-Use it to vet any third-party skill before adopting it here. See the
-[scanning guide](https://docs.nvidia.com/skills/scanning-agent-skills) for the workflow.
+### Overlap and precedence
+
+The third-party [angular-developer](.claude/skills/angular-developer/SKILL.md) skill covers some
+topics that dedicated custom skills own (forms, e2e tests, a11y, styling, migrations). On overlap,
+the narrower custom skill (`ng-forms`, `create-e2e-tests`, `ng-accessibility`, `ng-styling`,
+`ng-migrate`) wins; the project [`style-guide/`](style-guide/style-guide.md) overrides both.
 
 ## Custom skills
 
