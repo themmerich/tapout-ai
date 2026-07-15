@@ -52,22 +52,26 @@ Subagent (general-purpose):
     1. General correctness against the requirements, runtime behavior, edge
        cases, tests, architecture, performance, and security.
     2. Style-guide conformance for every touched file type. The style guides live
-       in `frontend/style-guide/` and apply **only to the Angular frontend**
-       (`frontend/`). For changes outside `frontend/` (e.g. the Spring Boot
-       `backend/`), skip this pass and note that no frontend style guide applies.
+       in the repo-root `style-guide/`. The Markdown and Git guides apply to the
+       whole repository; the code guides apply to the Angular frontend
+       (`frontend/`). For code changes outside `frontend/` (e.g. the Spring Boot
+       `backend/`), skip the code guides and note that no frontend style guide applies.
 
     For touched files under `frontend/`, always read
-    `frontend/style-guide/style-guide.md` first, then read the specific guide for
+    `style-guide/style-guide.md` first, then read the specific guide for
     every touched file type:
 
-    - TypeScript and Angular code: `frontend/style-guide/style-guide.ts.md`
-    - Angular templates: `frontend/style-guide/style-guide.html.md`
-    - SCSS: `frontend/style-guide/style-guide.scss.md`
-    - Accessibility-sensitive template or UI changes: `frontend/style-guide/style-guide.a11y.md`
-    - Tests: `frontend/style-guide/style-guide.spec.md`
-    - NPM dependencies: `frontend/style-guide/style-guide.npm.md`
-    - Markdown documentation: `frontend/style-guide/style-guide.md.md`
-    - Git workflow, commit, or branch changes: `frontend/style-guide/style-guide.git.md`
+    - TypeScript and Angular code: `style-guide/style-guide.ts.md`
+    - Angular templates: `style-guide/style-guide.html.md`
+    - SCSS: `style-guide/style-guide.scss.md`
+    - Accessibility-sensitive template or UI changes: `style-guide/style-guide.a11y.md`
+    - Tests: `style-guide/style-guide.spec.md`
+    - NPM dependencies: `style-guide/style-guide.npm.md`
+
+    Repo-wide, regardless of package:
+
+    - Markdown documentation: `style-guide/style-guide.md.md`
+    - Git workflow, commit, or branch changes: `style-guide/style-guide.git.md`
 
     For Angular code, specifically check modern Angular v22+ practices:
 
@@ -209,9 +213,9 @@ Recommendations, Assessment
 
 ### Style Guide Coverage
 
-- Read `frontend/style-guide/style-guide.md`, `frontend/style-guide/style-guide.ts.md`,
-  `frontend/style-guide/style-guide.html.md`, `frontend/style-guide/style-guide.a11y.md`, and
-  `frontend/style-guide/style-guide.spec.md`.
+- Read `style-guide/style-guide.md`, `style-guide/style-guide.ts.md`,
+  `style-guide/style-guide.html.md`, `style-guide/style-guide.a11y.md`, and
+  `style-guide/style-guide.spec.md`.
 - Covered touched TypeScript, Angular template, accessibility, and test files.
 
 ### Issues

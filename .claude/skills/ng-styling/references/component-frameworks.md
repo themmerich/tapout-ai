@@ -42,8 +42,8 @@ inspiration from the frameworks above:
 - **Standalone components + `ChangeDetectionStrategy.OnPush`** for performance — see
   [`ng-performance`](../../ng-performance/SKILL.md).
 
-If the project already builds on a lightweight primitive layer, prefer
-[`spartan`](../../spartan/SKILL.md) (spartan/ui — Brain + Helm) over a heavy component framework.
+If the project already builds on a lightweight primitive layer, prefer spartan/ui
+(Brain + Helm) over a heavy component framework.
 
 ## `inject(DOCUMENT)` for SSR-safe DOM access (`ADV-1`)
 

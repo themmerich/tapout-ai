@@ -158,11 +158,10 @@ encapsulation, or flattening selectors can change what renders.
 
 ## Setup this skill assumes
 
-The workshop's quality frame should already be in place (see [Lab 01](../../../labs/01-setup.html)):
 **Prettier** + **ESLint**, an **`AGENTS.md`** with the project rules, the project's
-[`style-guide/`](../../../style-guide/style-guide.md), the **Angular MCP** for current docs, and an
-**`.aiignore`**. **Stylelint is optional** — if absent, the skill reports it as a 🔵 advisory rather
-than relying on it.
+[`style-guide/`](../../../style-guide/style-guide.md), and the **Angular MCP** for current docs
+should already be in place. **Stylelint is optional** — if absent, the skill reports it as a 🔵
+advisory rather than relying on it.
 
 ## Pairs with
 
@@ -177,8 +176,6 @@ than relying on it.
   `document` access.
 - [`ng-review-architecture`](../ng-review-architecture/SKILL.md) — deeper structural review when a
   restyle turns into a design-system decision.
-- [`spartan`](../spartan/SKILL.md) — when styling is built on spartan/ui (Helm) instead of a heavy
-  component framework.
 
 ## Detailed references
 
