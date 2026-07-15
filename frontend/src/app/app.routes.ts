@@ -1,11 +1,12 @@
 import { Routes } from '@angular/router';
 
 export const routes: Routes = [
-  // Demo route: smoke-tests the PrimeNG + Transloco + Tailwind wiring. When
-  // starting a real app from this template, delete the primeng-test component,
+  // Demo route: smoke-tests the PrimeNG + Transloco + Tailwind wiring and the
+  // Sheriff module structure (src/app/<scope>/<type>, see sheriff.config.ts).
+  // When starting a real app from this template, delete the demo scope,
   // this route, and its keys in public/i18n/*.json.
   {
     path: '',
-    loadComponent: () => import('./primeng-test/primeng-test').then((m) => m.PrimeNgTest),
+    loadComponent: () => import('./demo/feature/primeng-test/primeng-test').then((m) => m.PrimeNgTest),
   },
 ];

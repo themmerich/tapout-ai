@@ -30,6 +30,11 @@ Angular 22 (standalone components + signals, zoneless), pnpm, PrimeNG, Transloco
   git-ignored `src/environments/environment.local.ts` (copy from `.example`), never committed.
 - **Shared state lives in NgRx Signals stores** (signal store); plain signals are
   fine for local component state.
+- **Module boundaries are enforced by Sheriff** (`sheriff.config.ts`, wired into
+  ESLint). App code is structured as `src/app/<scope>/<type>` — bounded contexts
+  with the library categories from the ng-review-architecture skill (`feature`,
+  `ui`, `data-access`, `domain`, `util`, `shell`). Inspect with
+  `pnpm exec sheriff list`; the dependency rules live in the config.
 
 ## Style guide
 
