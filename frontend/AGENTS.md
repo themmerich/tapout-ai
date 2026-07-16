@@ -16,6 +16,7 @@ Angular 22 (standalone components + signals, zoneless), pnpm, PrimeNG, Transloco
 | `pnpm start:local`                  | Dev server with the local PrimeNG license (`environment.local.ts`) |
 | `pnpm build`                        | Production build                                                   |
 | `pnpm test`                         | Unit tests (Vitest)                                                |
+| `pnpm e2e`                          | E2E tests (Playwright; starts the dev server if none is running)   |
 | `pnpm lint`                         | ESLint                                                             |
 | `pnpm format` / `pnpm format:check` | Prettier                                                           |
 
