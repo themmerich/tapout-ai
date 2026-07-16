@@ -18,6 +18,10 @@
 /coverage
 .eslintcache
 __screenshots__/
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
 
 # Local, git-ignored environment override (holds secrets like the PrimeNG license key)
 /src/environments/environment.local.ts
