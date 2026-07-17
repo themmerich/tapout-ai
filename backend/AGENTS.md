@@ -12,11 +12,11 @@ monorepo-wide conventions (git/PR workflow, secrets, layout).
 
 ## Commands (run inside `backend/`)
 
-| Command | Purpose |
-| --- | --- |
-| `./gradlew bootRun` | Run the app (starts PostgreSQL via `compose.yaml` in dev) |
-| `./gradlew build` | Compile + run tests |
-| `./gradlew test` | Run tests only |
+| Command             | Purpose                                                       |
+| ------------------- | ------------------------------------------------------------- |
+| `./gradlew bootRun` | Run the app (starts PostgreSQL via `compose.yaml` in dev)     |
+| `./gradlew build`   | Compile + run tests (needs Docker — see Testcontainers below) |
+| `./gradlew test`    | Run tests only (needs Docker)                                 |
 
 Use the Gradle wrapper (`./gradlew`); do not rely on a globally installed Gradle.
 
@@ -32,3 +32,6 @@ Use the Gradle wrapper (`./gradlew`); do not rely on a globally installed Gradle
   entities (prefer explicit `@Getter`/`@Setter` to avoid equals/hashCode pitfalls).
 - Local development expects a PostgreSQL instance; `compose.yaml` provides one and
   Spring Boot Docker Compose wires it up automatically on `bootRun`.
+- **Tests never use a locally running database.** Integration tests import
+  `TestcontainersConfiguration` (in `src/test/java`), which provisions a PostgreSQL
+  container via Testcontainers and `@ServiceConnection` — only Docker is required.

@@ -35,8 +35,8 @@ them.
 - **Node.js 26+** with **Corepack enabled** (`corepack enable`) — pnpm is pinned via the
   `packageManager` field in [`frontend/package.json`](frontend/package.json); never use npm or yarn
 - **Java 25** (the Gradle wrapper handles Gradle itself)
-- **Docker** — provides PostgreSQL for the backend via
-  [`backend/compose.yaml`](backend/compose.yaml)
+- **Docker** — provides PostgreSQL for the backend: via
+  [`backend/compose.yaml`](backend/compose.yaml) in dev, via Testcontainers in tests
 
 ## Quick start
 
@@ -108,30 +108,27 @@ secret is ever committed.
 
 ## Verification
 
-| Command                                | Scope                                                                     |
-| -------------------------------------- | ------------------------------------------------------------------------- |
-| `node scripts/verify.mjs`              | Everything: frontend lint/format/test/build + backend build               |
-| `pnpm lint` / `pnpm test` / `pnpm e2e` | Frontend, run inside `frontend/`                                          |
-| `./gradlew build`                      | Backend, run inside `backend/` (currently needs PostgreSQL — see roadmap) |
+| Command                                | Scope                                                                    |
+| -------------------------------------- | ------------------------------------------------------------------------ |
+| `node scripts/verify.mjs`              | Everything: frontend lint/format/test/build + backend build              |
+| `pnpm lint` / `pnpm test` / `pnpm e2e` | Frontend, run inside `frontend/`                                         |
+| `./gradlew build`                      | Backend, run inside `backend/` (needs Docker — tests use Testcontainers) |
 
 ## Roadmap / open points
 
 Known gaps this reference setup still wants to close, roughly in order:
 
-1. **Backend green on a fresh clone** — `./gradlew build` currently fails without a running
-   PostgreSQL (`contextLoads` finds no datasource). Planned: **Testcontainers** with
-   `@ServiceConnection` so tests provision their own database.
-2. **CI pipeline** — no `.github/workflows/` yet. Planned: a workflow mirroring
+1. **CI pipeline** — no `.github/workflows/` yet. Planned: a workflow mirroring
    `scripts/verify.mjs` with pnpm and Gradle caching, plus Playwright against a production build.
-3. **Frontend ↔ backend integration slice** — no touchpoint exists yet. Planned: one vertical
+2. **Frontend ↔ backend integration slice** — no touchpoint exists yet. Planned: one vertical
    slice (Flyway migration → JPA entity → validated REST endpoint → `httpResource()` in the
    frontend via a dev-server proxy) to demonstrate the monorepo interplay and give the Sheriff
    categories real code.
-4. **Pin the toolchain machine-readably** — add `engines`/`.nvmrc` for Node; the style guides name
+3. **Pin the toolchain machine-readably** — add `engines`/`.nvmrc` for Node; the style guides name
    Node 26 only in prose.
-5. **Harden `backend/compose.yaml`** — still stock Spring Initializr output: pin the PostgreSQL
+4. **Harden `backend/compose.yaml`** — still stock Spring Initializr output: pin the PostgreSQL
    major version and name the database/user after the project.
-6. **License** — add a `LICENSE` file once the repo is published as a public template.
-7. **Dependency automation** — Renovate (or Dependabot) configuration.
-8. **Architecture docs placeholders** — `CONTEXT.md` (domain glossary) and `docs/adr/`, which the
+5. **License** — add a `LICENSE` file once the repo is published as a public template.
+6. **Dependency automation** — Renovate (or Dependabot) configuration.
+7. **Architecture docs placeholders** — `CONTEXT.md` (domain glossary) and `docs/adr/`, which the
    architecture-review skill already expects.
