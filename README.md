@@ -89,6 +89,10 @@ node scripts/verify.mjs
   against blocking loops.
 - [`scripts/verify.mjs`](scripts/verify.mjs) runs the full suite; both share one step runner
   ([`scripts/ci-checks.mjs`](scripts/ci-checks.mjs)).
+- **CI** ([`.github/workflows/ci.yml`](.github/workflows/ci.yml)) mirrors that full suite on every
+  push and pull request: a frontend job (lint, format, unit tests, production build, and Playwright
+  e2e **against the production build**) and a backend job (Gradle build with Testcontainers), with
+  pnpm and Gradle caching.
 
 ### AI-agent guidance that scales
 
@@ -118,17 +122,15 @@ secret is ever committed.
 
 Known gaps this reference setup still wants to close, roughly in order:
 
-1. **CI pipeline** — no `.github/workflows/` yet. Planned: a workflow mirroring
-   `scripts/verify.mjs` with pnpm and Gradle caching, plus Playwright against a production build.
-2. **Frontend ↔ backend integration slice** — no touchpoint exists yet. Planned: one vertical
+1. **Frontend ↔ backend integration slice** — no touchpoint exists yet. Planned: one vertical
    slice (Flyway migration → JPA entity → validated REST endpoint → `httpResource()` in the
    frontend via a dev-server proxy) to demonstrate the monorepo interplay and give the Sheriff
    categories real code.
-3. **Pin the toolchain machine-readably** — add `engines`/`.nvmrc` for Node; the style guides name
+2. **Pin the toolchain machine-readably** — add `engines`/`.nvmrc` for Node; the style guides name
    Node 26 only in prose.
-4. **Harden `backend/compose.yaml`** — still stock Spring Initializr output: pin the PostgreSQL
+3. **Harden `backend/compose.yaml`** — still stock Spring Initializr output: pin the PostgreSQL
    major version and name the database/user after the project.
-5. **License** — add a `LICENSE` file once the repo is published as a public template.
-6. **Dependency automation** — Renovate (or Dependabot) configuration.
-7. **Architecture docs placeholders** — `CONTEXT.md` (domain glossary) and `docs/adr/`, which the
+4. **License** — add a `LICENSE` file once the repo is published as a public template.
+5. **Dependency automation** — Renovate (or Dependabot) configuration.
+6. **Architecture docs placeholders** — `CONTEXT.md` (domain glossary) and `docs/adr/`, which the
    architecture-review skill already expects.
