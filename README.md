@@ -76,9 +76,21 @@ node scripts/verify.mjs
   `src/app/<scope>/<type>` with `feature`/`ui`/`data-access`/`domain`/`util`/`shell` categories and
   strict dependency arrows — on every lint run.
 
+### A full-stack vertical slice
+
+- The **notes** feature is one thin slice through the whole stack: a Flyway migration → JPA entity →
+  service → validated REST controller (`/api/notes`, full CRUD) on the backend, consumed on the
+  frontend by an Angular `httpResource()` store through a dev-server proxy
+  ([`frontend/proxy.conf.json`](frontend/proxy.conf.json)).
+- It gives the Sheriff categories real code: the `notes` scope populates `domain`, `data-access`,
+  `ui`, `feature`, and `shell` (route `/notes`). Reads go through `httpResource()`, writes through
+  `HttpClient`, and the create form uses Signal Forms.
+
 ### Testing on both levels
 
-- **Unit**: Vitest through Angular's `unit-test` builder (`pnpm test`), zoneless, jsdom.
+- **Frontend unit**: Vitest through Angular's `unit-test` builder (`pnpm test`), zoneless, jsdom.
+- **Backend integration**: JUnit 5 against a real PostgreSQL via Testcontainers — a `@DataJpaTest`
+  repository slice and a full `@SpringBootTest` + MockMvc CRUD test.
 - **E2E**: Playwright (`pnpm e2e`) with a `webServer` block that starts or reuses the dev server;
   specs follow a role/label/text selector ladder with web-first assertions.
 
@@ -122,15 +134,11 @@ secret is ever committed.
 
 Known gaps this reference setup still wants to close, roughly in order:
 
-1. **Frontend ↔ backend integration slice** — no touchpoint exists yet. Planned: one vertical
-   slice (Flyway migration → JPA entity → validated REST endpoint → `httpResource()` in the
-   frontend via a dev-server proxy) to demonstrate the monorepo interplay and give the Sheriff
-   categories real code.
-2. **Pin the toolchain machine-readably** — add `engines`/`.nvmrc` for Node; the style guides name
+1. **Pin the toolchain machine-readably** — add `engines`/`.nvmrc` for Node; the style guides name
    Node 26 only in prose.
-3. **Harden `backend/compose.yaml`** — still stock Spring Initializr output: pin the PostgreSQL
+2. **Harden `backend/compose.yaml`** — still stock Spring Initializr output: pin the PostgreSQL
    major version and name the database/user after the project.
-4. **License** — add a `LICENSE` file once the repo is published as a public template.
-5. **Dependency automation** — Renovate (or Dependabot) configuration.
-6. **Architecture docs placeholders** — `CONTEXT.md` (domain glossary) and `docs/adr/`, which the
+3. **License** — add a `LICENSE` file once the repo is published as a public template.
+4. **Dependency automation** — Renovate (or Dependabot) configuration.
+5. **Architecture docs placeholders** — `CONTEXT.md` (domain glossary) and `docs/adr/`, which the
    architecture-review skill already expects.
