@@ -32,7 +32,8 @@ them.
 
 ## Prerequisites
 
-- **Node.js 26+** with **Corepack enabled** (`corepack enable`) — pnpm is pinned via the
+- **Node.js 26+** with **Corepack enabled** (`corepack enable`) — the version is pinned in
+  [`.nvmrc`](.nvmrc) (also used by CI) and enforced via `engines`; pnpm is pinned via the
   `packageManager` field in [`frontend/package.json`](frontend/package.json); never use npm or yarn
 - **Java 25** (the Gradle wrapper handles Gradle itself)
 - **Docker** — provides PostgreSQL for the backend: via
@@ -134,11 +135,6 @@ secret is ever committed.
 
 Known gaps this reference setup still wants to close, roughly in order:
 
-1. **Pin the toolchain machine-readably** — add `engines`/`.nvmrc` for Node; the style guides name
-   Node 26 only in prose.
-2. **Harden `backend/compose.yaml`** — still stock Spring Initializr output: pin the PostgreSQL
-   major version and name the database/user after the project.
-3. **License** — add a `LICENSE` file once the repo is published as a public template.
-4. **Dependency automation** — Renovate (or Dependabot) configuration.
-5. **Architecture docs placeholders** — `CONTEXT.md` (domain glossary) and `docs/adr/`, which the
+1. **Dependency automation** — Renovate (or Dependabot) configuration.
+2. **Architecture docs placeholders** — `CONTEXT.md` (domain glossary) and `docs/adr/`, which the
    architecture-review skill already expects.
