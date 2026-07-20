@@ -106,6 +106,10 @@ node scripts/verify.mjs
   push and pull request: a frontend job (lint, format, unit tests, production build, and Playwright
   e2e **against the production build**) and a backend job (Gradle build with Testcontainers), with
   pnpm and Gradle caching.
+- **Dependency automation** ([`renovate.json`](renovate.json)): Renovate covers pnpm, Gradle,
+  GitHub Actions, and the pinned postgres image — a custom manager keeps
+  [`compose.yaml`](backend/compose.yaml) and the Testcontainers configuration in sync, and majors
+  of Angular-coupled packages wait for manual dashboard approval (they must match Angular 22).
 
 ### AI-agent guidance that scales
 
@@ -135,6 +139,7 @@ secret is ever committed.
 
 Known gaps this reference setup still wants to close, roughly in order:
 
-1. **Dependency automation** — Renovate (or Dependabot) configuration.
+1. **Activate Renovate** — [`renovate.json`](renovate.json) is in place; install the
+   [Mend Renovate GitHub App](https://github.com/apps/renovate) on the repository to activate it.
 2. **Architecture docs placeholders** — `CONTEXT.md` (domain glossary) and `docs/adr/`, which the
    architecture-review skill already expects.
